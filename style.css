@@ -1,0 +1,64 @@
+
+body { font-family: Arial, sans-serif; background-color: #f4f7f6; margin: 0; padding: 20px; }
+.admin-header { text-align: center; margin-bottom: 40px; color: #2c3e50; }
+
+.card-container {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.card {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    width: 300px;
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.card:hover { transform: translateY(-10px); }
+.card img { width: 100%; border-radius: 8px; }
+.card h3 { color: #27ae60; margin: 15px 0; }
+.card p { color: #666; font-size: 14px; margin-bottom: 20px; height: 60px; }
+
+.card button {
+    background-color: #27ae60;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.card button:hover { background-color: #219150; }
+
+.logout-btn {
+    background-color: #e74c3c;
+    color: white;
+    padding: 10px 30px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* for report cards */
+.analytics-card h3 {
+    color: #2980b9 !important; 
+}
+
+.analytics-card button {
+    background-color: #2980b9 !important;
+}
+
+.analytics-card button:hover {
+    background-color: #1f6391 !important;
+}
+
+.card-container {
+    max-width: 1300px;
+    margin: 0 auto;
+}

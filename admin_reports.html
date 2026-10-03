@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Analytics | GreenCare Admin</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f0f3f1;
+            padding: 40px;
+        }
+
+        /* Header Section with Top-Level Alignment */
+        .header-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+            background: #ffffff;
+            padding: 25px 35px;
+            border-radius: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        h2 {
+            color: #2d3436;
+            font-size: 26px;
+            font-weight: bold;
+            border-left: 6px solid #87EE62;
+            padding-left: 15px;
+        }
+
+        /* Button with Fading Gradient and Shadow */
+        .refresh-btn {
+            background: linear-gradient(to right, #87EE62, rgba(135, 238, 98, 0.4));
+            color: #1a5c1a;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: bold;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: 0.3s;
+        }
+
+        .refresh-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+            opacity: 0.9;
+        }
+
+        /* Dashboard Grid Layout */
+        .report-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 25px;
+        }
+
+        /* Top-Level Card Design */
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            border-top: 5px solid #87EE62;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        h3 {
+            color: #2c3e50;
+            font-size: 18px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Table Design with Vertical Dividing Lines */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        th, td {
+            text-align: left;
+            padding: 14px;
+            border: 1px solid #edf2f7; /* Vertical Lines */
+            font-size: 14px;
+        }
+
+        th {
+            background: #f8f9fa;
+            font-weight: bold;
+            color: #1a5c1a;
+            text-transform: uppercase;
+            font-size: 12px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #fcfdfc;
+        }
+
+        tr:hover {
+            background-color: rgba(135, 238, 98, 0.05);
+        }
+
+        /* Alert and Currency Styles */
+        .low-stock { color: #e53e3e; font-weight: bold; }
+        .currency { color: #2f855a; font-weight: bold; }
+        .expired-header { border-top: 5px solid #e53e3e !important; }
+        .expired-title { color: #e53e3e !important; }
+
+        .back-nav {
+            margin-bottom: 20px;
+            display: inline-block;
+            color: #4CAF50;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+    <a href="admin_dashboard.html" class="back-nav">← Back to Dashboard</a>
+
+    <div class="header-section">
+        <h2>Business Analytics Dashboard</h2>
+        <button class="refresh-btn" onclick="loadAllReports()">Refresh All Reports</button>
+    </div>
+
+    
+
+    <div class="report-grid">
+        <div class="card">
+            <h3>📊 Monthly Sales Revenue</h3>
+            <table id="monthlySalesTable">
+                <thead><tr><th>Month</th><th>Revenue (Rs.)</th></tr></thead>
+                <tbody></tbody>
+            </table>
+        </div>
+
+        <div class="card">
+            <h3>🏆 Top 5 Selling Medicines</h3>
+            <table id="mostSellingTable">
+                <thead><tr><th>Medicine Brand</th><th>Units Sold</th></tr></thead>
+                <tbody></tbody>
+            </table>
+        </div>
+
+        <div class="card">
+            <h3>👥 Top Purchasing Clients</h3>
+            <table id="topClientsTable">
+                <thead><tr><th>Client Name</th><th>Total Spent</th></tr></thead>
+                <tbody></tbody>
+            </table>
+        </div>
+
+        <div class="card">
+            <h3>⏳ Expiry Alerts (Next 6 Months)</h3>
+            <table id="expiryTable">
+                <thead><tr><th>Medicine</th><th>Expiry Date</th></tr></thead>
+                <tbody></tbody>
+            </table>
+        </div>
+
+        <div class="card">
+            <h3>📉 Low Stock Alert (Below 50 Units)</h3>
+            <table id="lowStockTable">
+                <thead><tr><th>Medicine Name</th><th>Current Qty</th></tr></thead>
+                <tbody></tbody>
+            </table>
+        </div>
+
+        <div class="card expired-header">
+            <h3 class="expired-title">⚠️ Already Expired Medicines</h3>
+            <table id="expiredTable">
+                <thead>
+                    <tr>
+                        <th>Medicine Name</th>
+                        <th>Expiry Date</th>
+                        <th>Stock</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="reports.js"></script>
+</body>
+</html>

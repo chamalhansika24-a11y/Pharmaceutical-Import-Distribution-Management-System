@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | GreenCare</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f0f3f1;
+            padding-bottom: 50px;
+        }
+
+        /* Top Header Area */
+        .header-banner {
+            background: #ffffff;
+            padding: 40px 20px;
+            text-align: center;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+        }
+
+        .header-banner h1 {
+            color: #2d3436;
+            font-size: 32px;
+            font-weight: bold;
+            border-bottom: 4px solid #87EE62;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        .header-banner h3 {
+            color: #636e72;
+            font-size: 16px;
+            font-weight: normal;
+        }
+
+        /* Profile Container Styling */
+        #profile-container {
+            max-width: 1100px;
+            margin: 0 auto 30px;
+            background: white;
+            padding: 25px;
+            border-radius: 25px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-left: 8px solid #87EE62;
+        }
+
+        .profile-details {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            flex-grow: 1;
+            margin: 0 30px;
+        }
+
+        .profile-details p {
+            font-size: 13px;
+            color: #555;
+        }
+
+        .profile-details span {
+            color: #2d3436;
+            font-weight: bold;
+        }
+
+        #welcomeText {
+            color: #1a5c1a;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        /* Main Grid for Action Cards */
+        .card-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            padding: 0 20px;
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            transition: 0.3s;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid #eee;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+
+        .card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-bottom: 4px solid #87EE62;
+        }
+
+        .card h3 {
+            padding: 20px 15px 5px;
+            color: #2d3436;
+        }
+
+        .card p {
+            padding: 10px 20px 20px;
+            color: #636e72;
+            font-size: 14px;
+            line-height: 1.5;
+            flex-grow: 1;
+        }
+
+        /* Buttons with Fading Gradient and Shadow */
+        button {
+            margin: 0 25px 25px;
+            padding: 12px;
+            background: linear-gradient(to right, #87EE62, rgba(135, 238, 98, 0.4));
+            border: none;
+            border-radius: 15px;
+            color: #1a5c1a;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: 0.3s;
+            text-transform: uppercase;
+            font-size: 12px;
+        }
+
+        button:hover {
+            opacity: 0.9;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+        }
+
+        .logout-btn {
+            background: #ff7675 !important;
+            color: white !important;
+            box-shadow: 0 4px 10px rgba(255, 118, 117, 0.3) !important;
+            margin: 0;
+            padding: 10px 25px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #2d3436;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header-banner">
+        <h1>Green care pharmaceuticals</h1>
+        <h3>Leading the way in Medical imports and distribution.</h3>
+    </div>
+
+    <div id="profile-container">
+        <div>
+            <h2 id="welcomeText">Welcome</h2>
+            <p style="font-size: 12px; color: #888;">Client Control Panel</p>
+        </div>
+        
+        <div class="profile-details">
+            <p>Organization: <span id="prof-org-name"></span></p>
+            <p>Username: <span id="prof-username"></span></p>
+            <p>Client Type: <span id="prof-type"></span></p>
+            <p>Email: <span id="prof-email"></span></p>
+            <p>Phone No: <span id="prof-phone"></span></p>
+            <p>City: <span id="prof-address"></span></p>
+        </div>
+
+        <button type="button" class="logout-btn" onclick="logout()">Log Out</button>
+    </div>
+
+    <h2 class="section-title">Online Ordering Platform</h2>
+
+    <div class="card-container">
+        <div class="card">
+            
+            <h3>Place New Order</h3>
+            <img src="https://dawatech.com/web/image/9924/top-view-pills-inside-shopping-cart_23-2148021433.jpg?access_token=39d8fc9e-7688-498b-b015-eb11db923a12" alt="Place Order">
+            <p>Select medicines, specify quantities, and place your order quickly with real-time stock updates.</p>
+            <button onclick="window.location.href='place_order.html'">PLACE ORDER</button>
+        </div>
+
+        <div class="card">
+            <h3>Order History</h3>
+            <img src="https://media.istockphoto.com/id/1132186568/photo/shopping-cart-toy-with-medicaments-in-front-of-laptop-screen-with-pharmacy-web-site-on-it.jpg?s=1024x1024&w=is&k=20&c=bIvabGE-pmDxeWQOsbsY9uc0heOR77Fw45_8ED7mzJE=" alt="Order History">
+            <p>Check all your past orders, view invoices, and monitor delivery status in one place.</p>
+            <button onclick="window.location.href='view_orders.html'">VIEW PREVIOUS ORDERS</button>
+        </div>
+
+        <div class="card">
+            <h3>Account Settings</h3>
+            <img src="https://media.istockphoto.com/id/1482163984/photo/doctor-hold-tablet-conduct-financial-transactions-with-calculate-expenses-income-and-data.jpg?s=1024x1024&w=is&k=20&c=zWTqxzF8bGrblXgoq0Fmkq65h58dkekED_xOKc9AtHY=" alt="Account Settings">
+            <p>Manage your account details, change passwords, and keep your contact information up to date.</p>
+            <button onclick="goToEditProfile()">UPDATE YOUR ACCOUNT</button>
+        </div>
+    </div>
+
+    <script src="client_dashboard.js"></script>
+</body>
+</html>

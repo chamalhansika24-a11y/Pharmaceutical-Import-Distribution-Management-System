@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order History | GreenCare</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f0f3f1;
+            padding: 40px;
+        }
+
+        .history-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: #ffffff;
+            padding: 35px;
+            border-radius: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        /* Heading with Brand Accent */
+        h2 {
+            color: #2d3436;
+            font-size: 26px;
+            margin-bottom: 30px;
+            border-left: 6px solid #87EE62;
+            padding-left: 15px;
+            font-weight: bold;
+        }
+
+        /* Table Design with Vertical Dividing Lines */
+        .table-wrapper {
+            overflow-x: auto;
+            border-radius: 15px;
+            border: 1px solid #ddd;
+            margin-bottom: 30px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+        }
+
+        thead tr {
+            background-color: #87EE62 !important;
+        }
+
+        th {
+            padding: 15px;
+            text-align: left;
+            color: #1a5c1a;
+            font-weight: bold;
+            font-size: 13px;
+            border: 1px solid rgba(0,0,0,0.05); /* Vertical Lines */
+            text-transform: uppercase;
+        }
+
+        td {
+            padding: 15px;
+            border: 1px solid #eee; /* Vertical Lines */
+            color: #444;
+            font-size: 14px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #fcfdfc;
+        }
+
+        tr:hover {
+            background-color: rgba(135, 238, 98, 0.05);
+        }
+
+        /* Back Button Style with Gradient */
+        .back-link {
+            display: inline-block;
+            background: linear-gradient(to right, #87EE62, rgba(135, 238, 98, 0.4));
+            padding: 12px 25px;
+            border-radius: 12px;
+            color: #1a5c1a;
+            font-weight: bold;
+            text-decoration: none;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: 0.3s;
+            font-size: 14px;
+        }
+
+        .back-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+            opacity: 0.9;
+        }
+
+        .status-badge {
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 11px;
+            font-weight: bold;
+            background: #eee;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="history-container">
+        <h2>My Previous Orders</h2>
+
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Order ID</th>
+                        <th>Total Amount (Rs.)</th>
+                        <th>Status</th>
+                        <th>Order Date</th>
+                    </tr>
+                </thead>
+                <tbody id="ordersBody">
+                    <tr>
+                        <td colspan="4" style="text-align: center; padding: 40px; color: #888;">
+                            Loading your order history...
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <a href="client_dashboard.html" class="back-link">← Back to Dashboard</a>
+    </div>
+
+    <script src="view_orders.js"></script>
+
+</body>
+</html>

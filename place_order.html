@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Place Order | GreenCare</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f0f3f1;
+            padding: 40px;
+        }
+
+        .order-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: #ffffff;
+            padding: 35px;
+            border-radius: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        /* Heading with Brand Accent */
+        h2 {
+            color: #2d3436;
+            font-size: 26px;
+            margin-bottom: 20px;
+            border-left: 6px solid #87EE62;
+            padding-left: 15px;
+            font-weight: bold;
+        }
+
+        h3 {
+            color: #2d3436;
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        /* Medicine List Styling */
+        #medicineList {
+            height: 350px; 
+            overflow-y: auto; 
+            margin-top: 10px; 
+            margin-bottom: 30px;
+            border: 1px solid #eee;
+            border-radius: 15px;
+            padding: 15px;
+            background: #fcfdfc;
+        }
+
+        /* Bill Card with Top-Level Alignment */
+        #bill-card {
+            margin-top: 20px; 
+            padding: 30px; 
+            border: 1px solid #e0e0e0;
+            border-radius: 20px;
+            background: #ffffff;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.02);
+        }
+
+        /* Table Design with Vertical Dividing Lines */
+        .table-wrapper {
+            overflow-x: auto;
+            border-radius: 12px;
+            border: 1px solid #ddd;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+        }
+
+        thead tr {
+            background-color: #87EE62 !important;
+        }
+
+        th {
+            padding: 15px;
+            text-align: left;
+            color: #1a5c1a;
+            font-weight: bold;
+            font-size: 13px;
+            border: 1px solid rgba(0,0,0,0.05); /* Vertical Lines */
+        }
+
+        td {
+            padding: 15px;
+            border: 1px solid #eee; /* Vertical Lines */
+            color: #444;
+            font-size: 14px;
+        }
+
+        #grand-total {
+            text-align: right;
+            font-size: 22px;
+            color: #2f855a;
+            font-weight: bold;
+            margin-bottom: 20px;
+            padding: 10px;
+            border-bottom: 2px solid #87EE62;
+            display: inline-block;
+            float: right;
+            width: 100%;
+        }
+
+        /* Buttons with Fading Gradient and Shadow */
+        .btn-group {
+            display: flex;
+            gap: 15px;
+            clear: both;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 12px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            font-size: 14px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .submit-btn {
+            background: linear-gradient(to right, #87EE62, #6bc94a);
+            color: #1a5c1a;
+            flex-grow: 2;
+        }
+
+        .clear-btn {
+            background: #ff7675;
+            color: white;
+            flex-grow: 1;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            opacity: 0.9;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+        }
+
+        .back-nav {
+            margin-bottom: 20px;
+            display: inline-block;
+            color: #4CAF50;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="order-container">
+        <a href="client_dashboard.html" class="back-nav">← Back to Dashboard</a>
+
+        <h2>Available Medicines</h2>
+        <div id="medicineList">
+            </div>
+
+        <div id="bill-card">
+            <h3>Your Order Bill</h3>
+            <div class="table-wrapper">
+                <table id="bill-table">
+                    <thead>
+                        <tr>
+                            <th>Medicine ID</th>
+                            <th>Unit Price (Rs.)</th>
+                            <th>Quantity</th>
+                            <th>Total (Rs.)</th>
+                        </tr>
+                    </thead>
+                    <tbody id="bill-body">
+                        </tbody>
+                </table>
+            </div>
+
+            <h4 id="grand-total">Total: Rs. 0.00</h4>
+
+            <div class="btn-group">
+                <button type="button" class="submit-btn" onclick="submitOrder()">Submit Order</button>
+                <button type="button" class="clear-btn" onclick="clearBill()">Clear Bill</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="place_order.js"></script>
+</body>
+</html>

@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Orders | GreenCare Admin</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f0f3f1;
+            padding: 40px;
+        }
+
+        .admin-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: #ffffff;
+            padding: 35px;
+            border-radius: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        /* Heading with Brand Accent */
+        h2 {
+            color: #2d3436;
+            font-size: 26px;
+            margin-bottom: 10px;
+            border-left: 6px solid #87EE62;
+            padding-left: 15px;
+            font-weight: bold;
+        }
+
+        p {
+            color: #636e72;
+            margin-bottom: 25px;
+            font-size: 14px;
+            padding-left: 21px;
+        }
+
+        /* Button with Fading Gradient and Shadow */
+        .back-btn {
+            background: linear-gradient(to right, #87EE62, rgba(135, 238, 98, 0.4));
+            border: none;
+            padding: 10px 20px;
+            border-radius: 10px;
+            color: #1a5c1a;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            margin-bottom: 25px;
+            transition: 0.3s;
+            display: inline-block;
+            text-decoration: none;
+            font-size: 13px;
+        }
+
+        .back-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+        }
+
+        /* Table Design with Vertical Dividing Lines */
+        .table-wrapper {
+            overflow-x: auto;
+            border-radius: 15px;
+            border: 1px solid #ddd;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            min-width: 900px;
+        }
+
+        thead tr {
+            background-color: #87EE62 !important;
+        }
+
+        th {
+            padding: 15px;
+            text-align: left;
+            color: #1a5c1a;
+            font-weight: bold;
+            font-size: 13px;
+            border-right: 1px solid rgba(0,0,0,0.05);
+        }
+
+        td {
+            padding: 15px;
+            border: 1px solid #eee;
+            color: #444;
+            font-size: 14px;
+        }
+
+        /* Status Badges */
+        .status-badge {
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        /* Action Buttons with Gradients */
+        .btn-update {
+            background: linear-gradient(to right, #87EE62, #6bc94a);
+            color: #1a5c1a;
+            border: none;
+            padding: 8px 14px;
+            cursor: pointer;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 12px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .btn-view {
+            background: linear-gradient(to right, #3498db, #2980b9);
+            color: white;
+            border: none;
+            padding: 8px 14px;
+            cursor: pointer;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 12px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        /* Modal Design */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(4px);
+            z-index: 1000;
+        }
+
+        .modal-content {
+            background: white;
+            margin: 5% auto;
+            padding: 35px;
+            width: 50%;
+            border-radius: 25px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            border-top: 10px solid #87EE62;
+        }
+
+        .close-btn {
+            float: right;
+            cursor: pointer;
+            color: #ff7675;
+            font-size: 28px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .close-btn:hover {
+            transform: scale(1.2);
+        }
+
+        #displayOrderId {
+            color: #4CAF50;
+            font-weight: bold;
+        }
+
+        hr {
+            border: 0;
+            height: 1px;
+            background: #eee;
+            margin: 20px 0;
+        }
+
+        select {
+            padding: 6px;
+            border-radius: 6px;
+            border: 1px solid #ddd;
+            outline: none;
+            font-size: 13px;
+        }
+
+.modal-content {
+    background: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 35px;
+    
+   
+    width: 95%; 
+    max-width: 900px; 
+    
+    border-radius: 25px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+    border-top: 10px solid #87EE62;
+    
+    overflow: hidden; 
+}
+
+#modalBody table {
+    width: 100%;
+    min-width: 100%; 
+    border-collapse: collapse;
+}
+
+#modalBody th, #modalBody td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+    </style>
+</head>
+<body>
+
+    <div class="admin-container">
+        <button class="back-btn" onclick="window.location.href='admin_dashboard.html'">
+            ← Back to Dashboard
+        </button>
+        
+        <h2>Admin Order Management</h2>
+        <p>Select Order Status and click to Update</p>
+
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Order ID</th>
+                        <th>Client Name</th>
+                        <th>Amount (Rs.)</th>
+                        <th>Date</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                        <th>View Items</th>
+                    </tr>
+                </thead>
+                <tbody id="adminOrdersBody">
+                    </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div id="itemsModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h3>Order Details - ID: <span id="displayOrderId"></span></h3>
+            <hr>
+            <div id="modalBody">
+                </div>
+        </div>
+    </div>
+
+    <script src="admin_orders.js"></script>
+</body>
+</html>

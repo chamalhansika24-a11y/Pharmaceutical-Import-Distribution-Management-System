@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Pharmacy Profile | GreenCare</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        /* Fixed Width Container with Top-Level Alignment */
+        .update-container { 
+            max-width: 600px; 
+            width: 100%;
+            background: #f5f7f5; 
+            padding: 40px; 
+            border-radius: 40px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5); 
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Decorative Brand Accent */
+        .update-container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 12px;
+            background: #87EE62;
+        }
+
+        h2 { 
+            color: #333; 
+            text-align: left; 
+            font-size: 26px;
+            margin-bottom: 25px;
+            font-weight: bold;
+            border-left: 6px solid #87EE62;
+            padding-left: 15px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.5);
+            padding: 20px;
+            border-radius: 20px;
+            margin-bottom: 20px;
+            border: 1px solid #e0e0e0;
+        }
+
+        h3 {
+            color: #1a5c1a;
+            font-size: 16px;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        /* Input Shadows and Style */
+        input { 
+            width: 100%; 
+            padding: 12px 15px; 
+            margin: 8px 0; 
+            border: 1px solid #ddd; 
+            border-radius: 20px; 
+            background: #ffffff;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            outline: none;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        input:focus {
+            border-color: #87EE62;
+            box-shadow: 0 4px 12px rgba(135, 238, 98, 0.2);
+        }
+
+        /* Buttons with Fading Gradient and Shadow */
+        .btn-group {
+            display: flex;
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        button { 
+            padding: 15px; 
+            border: none; 
+            border-radius: 25px; 
+            cursor: pointer; 
+            font-weight: bold; 
+            font-size: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transition: 0.3s;
+        }
+
+        .update-btn { 
+            flex: 2;
+            background: linear-gradient(to right, #87EE62, rgba(135, 238, 98, 0.5)); 
+            color: #1a5c1a; 
+        }
+
+        .cancel-btn {
+            flex: 1;
+            background: #ff7675;
+            color: white;
+        }
+
+        button:hover { 
+            opacity: 0.9;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="update-container">
+        <h2>Update Pharmacy Profile</h2>
+        
+        <form id="updatePharmacyForm">
+            <div class="section">
+                <h3>Account Information</h3>
+                <input type="text" id="u_username" placeholder="Username" required>
+                <input type="password" id="u_password" placeholder="New Password" required>
+                <input type="email" id="u_email" placeholder="Email Address" required>
+                <input type="text" id="u_phone" placeholder="Phone Number" required>
+            </div>
+
+            <div class="section">
+                <h3>Location Details</h3>
+                <input type="text" id="u_bno" placeholder="Building No" required>
+                <input type="text" id="u_street" placeholder="Street Name" required>
+                <input type="text" id="u_city" placeholder="City" required>
+            </div>
+
+            <div class="section">
+                <h3>Pharmacy Specific Details</h3>
+                <input type="text" id="u_pname" placeholder="Pharmacy Name" required>
+                <input type="text" id="u_regno" placeholder="Pharmacist Registration No" required>
+            </div>
+
+            <div class="btn-group">
+                <button type="submit" class="update-btn">Save All Changes</button>
+                <button type="button" class="cancel-btn" onclick="window.location.href='client_dashboard.html'">Cancel</button>
+            </div>
+        </form>
+    </div>
+
+    <script src="update_pharmacy.js"></script>
+</body>
+</html>
